@@ -1,12 +1,12 @@
 FROM ubuntu:latest
 
-RUN apt-get update && \ 
-    apt-get -y install python3 python3-pip && \
-    pip3 install flask flask-mysql
+WORKDIR /usr/src/app
 
-COPY . /opt/source-code
+RUN apt-get update -y
+RUN apt-get install -y python3-pip python3-dev
+RUN apt-get clean
+RUN pip install flask
 
-ENTRYPOINT FLASK_APP=/opt/source-code/app.py flask run
+COPY app.py /usr/src/app/app.py
 
-
-### docker build . -f Dockerfile -t custom-app
+ENTRYPOINT FLAST_APP=/usr/src/app/app.py flask run

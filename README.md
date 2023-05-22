@@ -2,18 +2,6 @@
 
 ![vm](./public/architecture.png)
 
-## Docker Run Command
-
-```
-    docker pull jenkins/jenkins:lts
-
-    docker run -d --name jenkins_conatiner \                // Naming
-    -p 8080:8080 -p 50000:50000 \                           // Port Mapping
-    -v /root/my-jenkins-data:/var/jenkins_home \            // Volume
-    -u root --restart always \                              // User & Restart Option
-    jenkins/jenkins:lts                                     // Image
-```
-
 ## Desc
 
 > Community Edition
@@ -30,6 +18,39 @@
 
 ```
     https://github.com/zkfmapf123/infra-automation
+```
+
+## 1. Docker Run Command
+
+```
+    docker pull jenkins/jenkins:lts
+
+    docker run -d --name jenkins_conatiner \                // Naming
+    -p 8080:8080 -p 50000:50000 \                           // Port Mapping
+    -v /root/my-jenkins-data:/var/jenkins_home \            // Volume
+    -u root --restart always \                              // User & Restart Option
+    jenkins/jenkins:lts                                     // Image
+```
+
+## 2. 도커 이미지 허브에 올리는 방법
+
+```
+    // 1. 도커 로그인
+    docker login
+
+    // 2. 이미지 생성
+    docker build . -f [Docker path] -t [Image Name]
+    docker build . -f Dockerfile -t simple_app
+
+    // 3. 이미지 태그 attach
+    docker tag [Docker iamge name] [docker hub id]/[docker image name]:[version]
+    docker tag simple_app:latest zkfmapf123/simple_app:1.0
+
+    // 4. docker push [Docker image name]
+    docker push zkfmapf123/simple_app:1.0
+
+    // 5. pull docker images
+    docker pull zkfmapf123/simple_app:1.0
 ```
 
 ## ...
