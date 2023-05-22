@@ -57,3 +57,4 @@
 
 - docker images의 용량을 줄이기위해 왠만하면 :alpine 이미지를 쓰자
 - alpine이미지는 docker exec -it [docker_container] /bin/bash가 안먹힘 -> /bin/sh
+- 현재 나의 컴퓨터는 mac(arm64), ec2 컴퓨터는 ubuntu(x86_64) 환경에 따른 이미지를 생성해야 한다.
