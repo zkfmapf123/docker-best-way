@@ -1,12 +1,15 @@
-FROM ubuntu:latest
+FROM node:14-alpine
 
 WORKDIR /usr/src/app
 
-RUN apt-get update -y
-RUN apt-get install -y python3-pip python3-dev
-RUN apt-get clean
-RUN pip install flask
+COPY package.json ./
 
-COPY app.py /usr/src/app/app.py
+RUN npm install
 
-ENTRYPOINT FLAST_APP=/usr/src/app/app.py flask run
+ENV PORT=3000
+
+COPY . .
+
+EXPOSE 3000
+
+CMD ["node", "app.js"]
