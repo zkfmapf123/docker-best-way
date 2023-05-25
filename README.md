@@ -34,7 +34,35 @@
 
 ## 2. 도커 이미지 허브에 올리는 방법
 
+### Docker Registery
+
 ```
+    images: docker.io  /      nginx      /         nginx
+            <Registry> / < User Account> / < Image Or Repository>
+
+    example)
+        docker push zkfmapf123/node-todolist-e2e-test:1.0
+```
+
+### Private Docker Registry
+
+- <a href="https://hub.docker.com/_/registry"> Docker Registry </a>
+
+```
+    docker run -d -p 5000:5000 --name registry registry:2
+
+    docker images tag my-image localhost:5000/my-image
+
+    docker push localhost:5000/my-image
+
+    docker pull localhost:5000/my-image (in localhost)
+    docker pull 192.168.56.100:5000/my-image (other host)
+```
+
+### push image to docker hub
+
+```
+
     // 1. 도커 로그인
     docker login
 
@@ -53,9 +81,9 @@
     docker pull zkfmapf123/simple_app:1.0
 ```
 
-### More Detail "./voing-app"
+## 3. Docker Engine
 
-![voting](./public/voting.png)
+- 분리된 컨테이너에서 Docker Container들은 어떻게 통신을 할까?
 
 ## ...
 
