@@ -53,6 +53,10 @@
     docker pull zkfmapf123/simple_app:1.0
 ```
 
+### More Detail "./voing-app"
+
+![voting](./public/voting.png)
+
 ## ...
 
 - docker images의 용량을 줄이기위해 왠만하면 :alpine 이미지를 쓰자
